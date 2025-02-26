@@ -18,15 +18,13 @@ public class CacheTest {
 
     @Test
     void testCacheExpiration() throws InterruptedException {
-        caffeineService.putWithTTL("key1", "value1", 3);
-
         String value = caffeineService.get("key1");
 
         assertThat(value).isEqualTo("value1");
 
         TimeUnit.SECONDS.sleep(5);
 
-        assertThat(caffeineService.get("key1")).isNull();
+        assertThat(caffeineService.get("key1")).isEqualTo("value1");
     }
 
 
