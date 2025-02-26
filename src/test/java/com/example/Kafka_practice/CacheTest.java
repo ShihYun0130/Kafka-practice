@@ -4,7 +4,6 @@ import com.example.Kafka_practice.cache.CaffeineService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.concurrent.TimeUnit;
@@ -18,13 +17,19 @@ public class CacheTest {
 
     @Test
     void testCacheExpiration() throws InterruptedException {
-        String value = caffeineService.get("key1");
+        String value = caffeineService.setCacheWithTTL("key1", "value1", 3);
 
         assertThat(value).isEqualTo("value1");
 
         TimeUnit.SECONDS.sleep(5);
 
-        assertThat(caffeineService.get("key1")).isEqualTo("value1");
+        assertThat(caffeineService.getCacheDataByKey("key1")).isNull();
+    }
+
+    @Test
+    void testCacheUntilMidnight(){
+        String value = caffeineService.getDataByKey("key1");
+        assertThat(value).isEqualTo("value1");
     }
 
 

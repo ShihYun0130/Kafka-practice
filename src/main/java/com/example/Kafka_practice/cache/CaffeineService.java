@@ -3,10 +3,8 @@ package com.example.Kafka_practice.cache;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.Expiry;
-import com.github.benmanes.caffeine.cache.LoadingCache;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +19,7 @@ public class CaffeineService {
                 .expireAfter(new Expiry<String, String>() {
                     @Override
                     public long expireAfterCreate(String key, String value, long currentTime) {
-                        return 300000000000L; // In nanoseconds. 1,000,000 ns = 1 ms.
+                        return 86400000000000L; // In nanoseconds. 1,000,000 ns = 1 ms.
                     }
 
                     @Override
@@ -38,7 +36,7 @@ public class CaffeineService {
                 .build();
     }
 
-    public String setWithTTL(String key, String value, long ttlSeconds) {
+    public String setCacheWithTTL(String key, String value, long ttlSeconds) {
         System.out.println("Cache before adding: " + cache.asMap());
 
         cache.policy().expireVariably().ifPresent(expiry -> {
@@ -52,35 +50,37 @@ public class CaffeineService {
 
         return value;
     }
-    public String get(String key) {
-        String cachedValue = cache.getIfPresent(key);
+
+    public String getCacheDataByKey(String key) {
+        return cache.getIfPresent(key);
+    }
+
+    public String getDataByKey(String key) {
+        String cachedValue = getCacheDataByKey(key);
         if (cachedValue == null) {
-            // get data from database and add to cache
-            String mockData = getByKey(key);
-            long ttl = getTTL();
-            cachedValue = setWithTTL(key, mockData, ttl);
+            // mock: get data from database and add to cache
+            String mockData = findById(key);
+            long ttl = getTTLToNextMidnight();
+            cachedValue = setCacheWithTTL(key, mockData, ttl);
         }
         System.out.println("Cache contents for key '" + key + "': " + cachedValue);
         return cachedValue;
     }
 
-    private long getTTL() {
+    private long getTTLToNextMidnight() {
         String timezone = "Asia/Taipei";
         ZoneId zoneId = ZoneId.of(timezone);
         ZonedDateTime currentTime = ZonedDateTime.now(zoneId);
         return (currentTime.plusDays(1).toLocalDate().atStartOfDay(zoneId).toInstant().toEpochMilli() - currentTime.toInstant().toEpochMilli()) / 1000;
     }
 
-    private String getByKey(String key) {
+    private String findById(String id) {
         // This is a mock database method
-        if (key.equals("key1")) {
-            return "value1";
-        } else if (key.equals("key2")) {
-            return "value2";
-        } else if (key.equals("key3")) {
-            return "value3";
-        } else {
-            return "";
-        }
+        return switch (id) {
+            case "key1" -> "value1";
+            case "key2" -> "value2";
+            case "key3" -> "value3";
+            default -> "";
+        };
     }
 }
