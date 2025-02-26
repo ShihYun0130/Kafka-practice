@@ -28,6 +28,7 @@ This is a simple Spring Boot practice project built using Java Spring Boot.
     ```bash
     POST /api/notifications/send
     ```
+- Caffeine Cache: A sample code of dynamic cache ttl for every key using Caffeine 
 
 ### How to Run the Project
 1. Run the following command to start Kafka and Zookeeper:
