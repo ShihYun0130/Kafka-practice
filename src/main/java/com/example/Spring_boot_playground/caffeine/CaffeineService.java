@@ -41,11 +41,8 @@ public class CaffeineService {
     public String setCacheWithTTL(String key, String value, long ttlSeconds) {
         System.out.println("Cache before adding: " + cache.asMap());
 
-        cache.policy().expireVariably().ifPresent(expiry -> {
-            System.out.println("Applying TTL with expireVariably for key: " + key);
-            expiry.put(key, value, ttlSeconds, TimeUnit.SECONDS);
-
-        });
+        cache.policy().expireVariably().ifPresent(expiry ->
+                expiry.put(key, value, ttlSeconds, TimeUnit.SECONDS));
 
         System.out.println("Cache after adding: " + cache.getIfPresent(key));
         System.out.println("Cache contents: " + cache.asMap());
