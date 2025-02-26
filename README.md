@@ -14,9 +14,11 @@ This is a simple Spring Boot practice project built using Java Spring Boot.
 │   │   ├── kafka
 │   │   │   ├── NotificationProducer.java       # Kafka Producer to send messages
 │   │   │   └── NotificationConsumer.java       # Kafka Consumer to consume messages
+│   │   └── caffeine
+│   │       └── CaffeineService.java            # A sample code of dynamic ttl cache using Caffeine
 │   └── resources
 │       └── application.yml                     # Application configuration, including Kafka settings
-└── pom.xml                                      # Maven dependencies, including Spring Boot and Kafka
+└── pom.xml                                     # Maven dependencies, including Spring Boot and Kafka
 ```
 
 ### Key Features

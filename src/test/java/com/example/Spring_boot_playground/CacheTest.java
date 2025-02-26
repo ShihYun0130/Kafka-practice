@@ -1,6 +1,6 @@
 package com.example.Spring_boot_playground;
 
-import com.example.Spring_boot_playground.cache.CaffeineService;
+import com.example.Spring_boot_playground.caffeine.CaffeineService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 public class CacheTest {
     @Autowired
     private CaffeineService caffeineService;
-
 
     @Test
     void testCacheExpiration() throws InterruptedException {

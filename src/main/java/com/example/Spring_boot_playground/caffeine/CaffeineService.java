@@ -1,4 +1,4 @@
-package com.example.Spring_boot_playground.cache;
+package com.example.Spring_boot_playground.caffeine;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
@@ -58,7 +58,7 @@ public class CaffeineService {
     public String getDataByKey(String key) {
         String cachedValue = getCacheDataByKey(key);
         if (cachedValue == null) {
-            // mock: get data from database and add to cache
+            // mock: get data from database and add to caffeine
             String mockData = findById(key);
             long ttl = getTTLToNextMidnight();
             cachedValue = setCacheWithTTL(key, mockData, ttl);
