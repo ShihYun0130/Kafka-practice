@@ -1,4 +1,4 @@
-package com.example.Kafka_practice.service;
+package com.example.Spring_boot_playground.service;
 
 public interface NotificationService {
     void sendNotification(String message);

@@ -1,7 +1,7 @@
-package com.example.Kafka_practice;
+package com.example.Spring_boot_playground;
 
-import com.example.Kafka_practice.kafka.NotificationProducer;
-import com.example.Kafka_practice.service.NotificationService;
+import com.example.Spring_boot_playground.kafka.NotificationProducer;
+import com.example.Spring_boot_playground.service.NotificationService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.example.Kafka_practice.service;
+package com.example.Spring_boot_playground.service;
 
-import com.example.Kafka_practice.kafka.NotificationProducer;
+import com.example.Spring_boot_playground.kafka.NotificationProducer;
 import org.springframework.stereotype.Service;
 
 @Service

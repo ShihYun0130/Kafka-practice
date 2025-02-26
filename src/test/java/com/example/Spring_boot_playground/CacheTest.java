@@ -1,6 +1,6 @@
-package com.example.Kafka_practice;
+package com.example.Spring_boot_playground;
 
-import com.example.Kafka_practice.cache.CaffeineService;
+import com.example.Spring_boot_playground.cache.CaffeineService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

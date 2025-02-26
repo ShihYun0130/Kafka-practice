@@ -1,4 +1,4 @@
-package com.example.Kafka_practice.kafka;
+package com.example.Spring_boot_playground.kafka;
 
 
 import org.springframework.beans.factory.annotation.Value;

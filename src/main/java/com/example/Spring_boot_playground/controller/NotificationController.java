@@ -1,6 +1,6 @@
-package com.example.Kafka_practice.controller;
+package com.example.Spring_boot_playground.controller;
 
-import com.example.Kafka_practice.service.NotificationService;
+import com.example.Spring_boot_playground.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

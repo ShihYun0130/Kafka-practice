@@ -1,11 +1,11 @@
-## Kafka Practice
+## Spring Boot Playground
 
-This is a simple Kafka practice project built using Java Spring Boot.
+This is a simple Spring Boot practice project built using Java Spring Boot.
 
 ### Project Structure
 ```bash
 ├── src/main/java
-│   ├── com.example.kafkapractice
+│   ├── com.example.Spring_Boot_Playground
 │   │   ├── controller
 │   │   │   └── NotificationController.java     # Handles REST API requests
 │   │   ├── service

@@ -1,4 +1,4 @@
-package com.example.Kafka_practice;
+package com.example.Spring_boot_playground;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

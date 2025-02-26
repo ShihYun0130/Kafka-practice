@@ -1,4 +1,4 @@
-package com.example.Kafka_practice.cache;
+package com.example.Spring_boot_playground.cache;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
