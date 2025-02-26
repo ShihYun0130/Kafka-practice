@@ -3,6 +3,7 @@ package com.example.Spring_boot_playground.caffeine;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.Expiry;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.time.ZoneId;
@@ -14,7 +15,8 @@ public class CaffeineService {
 
     private Cache<String, String> cache;
 
-    public CaffeineService() {
+    @PostConstruct
+    private void init() {
         cache = Caffeine.newBuilder()
                 .expireAfter(new Expiry<String, String>() {
                     @Override
